@@ -123,7 +123,15 @@ extension MaterialShowcase {
   /// Sets a UIBarButtonItem as target
   @objc public func setTargetView(barButtonItem: UIBarButtonItem) {
     if let view = (barButtonItem.value(forKey: "view") as? UIView)?.subviews.first {
-      targetView = view
+        targetView = view
+
+        var color = barButtonItem.tintColor
+        if (color == nil) {
+            color = view.tintColor!
+        }
+        
+        targetTintColor = color
+        backgroundPromptColor = color
     }
   }
   
